@@ -5,6 +5,16 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
 <link href="main.css" rel="stylesheet">
 <title>Product List</title>
 </head>
@@ -17,29 +27,30 @@
 		//DO NOT include this info in .java files pushed to GitHub in real projects
 		String user = "workplease";
 		String password = "pleaseplease";
+		String cat = request.getParameter("category");
+
 		try {
 			
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			con = DriverManager.getConnection(url, user, password);
 			st = con.createStatement();
-			String query = "SELECT  subject , title from movies";
+			
+			String query = "SELECT title, year from movies where Subject = '" + cat + "'" ;
 			rs = st.executeQuery(query);
 
-			%><table border="1"><%
 
 			
-			while (rs.next()) {
-	%>
+			
+			out.println("<table style=\"border-width: 1px;border-color: black\" >");
+				while(rs.next()){
+				out.println("<tr>");
+				out.println("<td>" + rs.getString(1) + "</td>");
+				out.println("<td>" + rs.getInt(2) + "</td>");
+				out.println("</tr>");
+				}
+out.println("</table>");
 
-	<TR>
-		 <TD><%=rs.getString(1)%></TD>
-		 <TD><%=rs.getString(2)%></TD> 
-		<%-- <TD><%=rs.getString(3)%></TD>
-		<TD><%=rs.getString(4)%></TD>
-		<TD><%=rs.getInt(5)%></TD>  --%> 
-	</TR>
-	<%
-		}
+		/* } */
 
 		} catch (SQLException e) {
 			out.println("DB Exception: " + e);

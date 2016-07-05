@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Stylish Portfolio - Start Bootstrap Theme</title>
+    <title>Movie Database</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -67,9 +67,9 @@
             <br>
             <div class="container">
   <div class="dropdown">
-    <form>
+    <form method = "get" action = "MoviePicker.jsp">
     
-    <select  name="category">
+    <select name="category">
   
   <option value="" disabled selected>Please Pick a Category</option>
   <option value="Action">Action</option>
@@ -82,6 +82,7 @@
   <option value="Westerns">Westerns</option>
   <option value="War">War</option>
 	</select>
+	<button type = "submit" > submit</button>
  </form>
   </div>
 </div>
