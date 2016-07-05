@@ -15,14 +15,14 @@
 		ResultSet rs = null;
 		String url = "jdbc:mysql://localhost:3306/movieList";
 		//DO NOT include this info in .java files pushed to GitHub in real projects
-		String user = "workplease";
-		String password = "pleaseplease";
+		String user = "java";
+		String password = "java123";
 		try {
 			
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			con = DriverManager.getConnection(url, user, password);
 			st = con.createStatement();
-			String query = "SELECT  subject , title from movies";
+			String query = "SELECT MovieID, Title, Genre, Actors, Year FROM movies";
 			rs = st.executeQuery(query);
 
 			%><table border="1"><%
@@ -32,11 +32,11 @@
 	%>
 
 	<TR>
-		 <TD><%=rs.getString(1)%></TD>
-		 <TD><%=rs.getString(2)%></TD> 
-		<%-- <TD><%=rs.getString(3)%></TD>
+		<TD><%=rs.getInt(1)%></TD>
+		<TD><%=rs.getString(2)%></TD>
+		<TD><%=rs.getString(3)%></TD>
 		<TD><%=rs.getString(4)%></TD>
-		<TD><%=rs.getInt(5)%></TD>  --%> 
+		<TD><%=rs.getInt(5)%></TD>
 	</TR>
 	<%
 		}
