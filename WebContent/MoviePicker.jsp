@@ -4,6 +4,9 @@
 <html>
 <head>
 
+<link rel= "stylesheet" href= "./css/tablepage.css">
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!-- Latest compiled and minified CSS -->
@@ -44,7 +47,7 @@
 			out.println("<table style=\"border-width: 1px;border-color: black\" >");
 				while(rs.next()){
 				out.println("<tr>");
-				out.println("<td>" + rs.getString(1) + "</td>");
+				out.println("<td >" + rs.getString(1) + "</td>");
 				out.println("<td>" + rs.getInt(2) + "</td>");
 				out.println("</tr>");
 				}
