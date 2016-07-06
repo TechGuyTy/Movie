@@ -47,7 +47,7 @@
 			out.println("<table style=\"border-width: 1px;border-color: black\" >");
 				while(rs.next()){
 				out.println("<tr>");
-				out.println("<td >" + rs.getString(1) + "</td>");
+				out.println("<td >"+ "<a href=\"http://www.imdb.com/find?ref_=nv_sr_fn&q=" + rs.getString(1).replace(';' , ' ') +  "\">" + rs.getString(1).replace(';', ',') +  "</a>"+ "</td>");
 				out.println("<td>" + rs.getInt(2) + "</td>");
 				out.println("</tr>");
 				}
